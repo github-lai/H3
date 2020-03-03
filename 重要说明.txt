@@ -1,0 +1,11 @@
+要求:
+
+1，PHP version >= PHP5.3(因为使用了命名空间)
+
+2，设置apache AllowOverride All(因为开启了url重写)
+
+3，开启apache模块 rewrite_module
+
+4，.htaccess文件重要
+
+
