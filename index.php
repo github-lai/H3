@@ -4,13 +4,6 @@ define("ROOTDIR",dirname(__FILE__)."/");
 define("ENV","dev");
 define("SPACE","usr");
 
-class _U{ 
-	function a()
-	{
-		echo 1;
-	}
-}
-
 if(ENV != "live"){
 	error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 }else{
