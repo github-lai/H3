@@ -3,18 +3,13 @@ namespace Lib;
 
 class Engine
 {
-	public $tagl = '{$';
-	public $tagr = '}';
-	
+
 	function __construct(){
 	}
 
 	function compile(&$str)
 	{
-		//Helper::runtime(0);
 		$final = $this->tran_preg($str);
-		//$final = $this->tran_char($str);
-		//echo Helper::runtime(1);exit;
 		return $final;
 	}
 
@@ -30,55 +25,6 @@ class Engine
 		$str = str_replace($arr[0],$replace,$str);
 
 		return $str;
-	}
-	
-	//在windows测试发现该方法比tran_preg慢了30倍
-	function tran_char(&$str)
-	{
-		$result = "";
-		$var = "";
-
-		$sig = array('{'=>0,'$'=>0,'}'=>0);
-		for($i=0; $i<strlen($str); $i++)
-		{
-			$c = $str[$i];
-			switch($c)
-			{
-				case '{':
-					if($sig['{'] == 1){
-						//echo $var;exit;
-						$result .= $var;
-						$var = '{';
-					}else{
-						$sig['{'] = 1;
-						$var .= '{';
-					}
-					break;
-				case '$':
-					if($sig['{'] = 1){
-						$var .= '$';
-					}else{
-						$result .= "$";
-					}
-					break;
-				case '}':
-					$var .= '}';
-					$sig['{'] = 0;
-					$result .= $this->convert($var);
-					$var = "";
-
-					break;
-				default:
-					if($sig['{'] == 1){
-						$var .= $c;
-					}else{
-						$result .= $c;
-					}
-					break;
-			}
-		}
-
-		return $result;
 	}
 
 	function convert($var)
