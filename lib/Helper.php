@@ -2,17 +2,17 @@
 namespace Lib;
 
 class Helper{
-	//计时函数helo
-	static function  runtime($mode=0)   {
-		static   $t;   
-		if(!$mode)   {   
-			$t   =   microtime();
+	//计时函数
+	static function runtime($mode=0){
+		static $t;   
+		if(!$mode){   
+			$t = microtime();
 			return;
 		}   
-		$t1   =   microtime();   
-		list($m0,$s0)   =   explode("   ",$t);   
-		list($m1,$s1)   =   explode("   ",$t1);   
-		return   sprintf("%.3f ms",($s1+$m1-$s0-$m0)*1000);
+		$t1 = microtime();   
+		list($m0,$s0) = explode("   ",$t);   
+		list($m1,$s1) = explode("   ",$t1);   
+		return sprintf("%.3f ms",($s1+$m1-$s0-$m0)*1000);
 	} 
 
 	static function microtime_float()
