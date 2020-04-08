@@ -1,11 +1,13 @@
-Ҫ��:
+要求:
 
-1��PHP version >= PHP5.3(��Ϊʹ���������ռ�)
+1，PHP version >= PHP5.3(因为使用了命名空间)
 
-2������apache AllowOverride All(��Ϊ������url��д)
+2，设置apache AllowOverride All(因为开启了url重写)
 
-3������apacheģ�� rewrite_module
+3，开启apache模块 rewrite_module
 
-4��.htaccess�ļ���Ҫ
+4，.htaccess文件重要
+
+5, 为了在linux下能正常运行，开发过程中请注意大小写要求
 
 
