@@ -7,7 +7,7 @@ define("SPACE","usr");
 if(ENV != "live"){
 	error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 }else{
-	error_reporting(0);//线上不显示错误
+	error_reporting(0);//不显示错误
 }
 ini_set("short_open_tag","On");
 
