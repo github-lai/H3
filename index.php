@@ -25,6 +25,7 @@ Lib\Config::set("tplext",".htm");//摸板的后缀设置
 */
 Lib\Config::set("authpath",array("Admin" => "AdminAuth"));
 
+//分发请求
 Lib\Router::dispatch();
 
 ?>
