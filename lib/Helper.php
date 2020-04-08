@@ -2,7 +2,7 @@
 namespace Lib;
 
 class Helper{
-	//计时函数   
+	//计时函数helo
 	static function  runtime($mode=0)   {
 		static   $t;   
 		if(!$mode)   {   
