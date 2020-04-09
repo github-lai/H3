@@ -20,7 +20,6 @@ class Home extends Base
 
 	function About()
 	{
-		
 		return $this->view("About");
 	}
 

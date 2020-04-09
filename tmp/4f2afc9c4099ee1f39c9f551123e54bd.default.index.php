@@ -50,7 +50,7 @@ $say = $this->vars["say"];
 			<div class="panel panel-default">
 			  <div class="panel-body text-center" style="background:#006699;color:white;padding:50px;">
 
-				<h2><?php echo $say; ?> Helper</h2>
+				
 			  </div>
 			</div>
 		</div>

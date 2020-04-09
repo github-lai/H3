@@ -113,27 +113,33 @@ class CtrlBase
 		if($layout !== false){
 			$layoutname = ($layout == null ? "_Layout" : $layout);
 			$masterfile = ROOTDIR.SPACE."/tpl/".strtolower($module)."/".$layoutname.$ext;//在linux下大小写敏感，注意了
-			//echo $masterfile;
-			$tmp = file_get_contents($masterfile,"r");
-			preg_match_all('|<container([^>]*?)/>|U',$tmp, $result, PREG_PATTERN_ORDER);
-			//print_r($result);exit;
-			foreach($result[1] as $item)
-			{
-				$id = str_replace(['id=','"',' '],['','',''],$item);
-				preg_match("|<container(\s+id=\"\s*?$id\s*?\")>([\w\W]*)</container>|U",$content, $arr);
-				if(isset($arr[0])){
-					$tmp = str_replace("<container$item/>",$arr[2],$tmp);
-					$content = str_replace($arr[0],"",$content);
-				}else{
-					$tmp = str_replace("<container$item/>","",$tmp);
+			$tmp = "";
+			if(file_exists($masterfile)){
+				$tmp = file_get_contents($masterfile,"r");
+				preg_match_all('|<container([^>]*?)/>|U',$tmp, $result, PREG_PATTERN_ORDER);
+				$error = array();
+				foreach($result[1] as $item)
+				{
+					$id = str_replace(['id=','"',' '],['','',''],$item);
+					preg_match("|<container(\s+id=\"\s*?$id\s*?\")>([\w\W]*)</container>|U",$content, $arr);
+					if(isset($arr[0])){
+						$tmp = str_replace("<container$item/>",$arr[2],$tmp);
+						$content = str_replace($arr[0],"",$content);
+					}else{
+						array_push($error, "模板 $tplfull 缺少容器".htmlentities("<container$item/>"));
+					}
 				}
+				if(count($error) > 0)
+				{
+					die(implode('<br/>',$error));
+				}
+			}else{
+				//没有母版
+				$tmp = $content;
 			}
-			if(trim($content) != "")
-			{
-				//$content = htmlentities($content);
-				//die("无法解析{$tpl}模板内容<font color='red'>'$content'</font>");
-			}
+
 			$final = $tmp;
+
 		}else{
 			$final = $content;
 		}
