@@ -17,3 +17,6 @@
 </ol>
 
 
+H3入门手册<br/>
+
+http://www.helper3.com/res/article/9897.html
