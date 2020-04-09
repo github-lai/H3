@@ -17,6 +17,12 @@
 </ol>
 
 
-H3入门手册<br/>
+<b>H3入门手册</b><br/>
 
 http://www.helper3.com/res/article/9897.html
+
+
+
+<br/><b>Bug反馈与建议</b><br/>
+
+qq群：570078429
