@@ -3,7 +3,7 @@ namespace Lib;
 
 class Http
 {
-	public 	$status = array(
+	static $status = array(
 		200 => 'OK',
 		301 => 'Moved Permanently',
 		302 => 'Moved Temporarily ',
@@ -17,7 +17,10 @@ class Http
 
 	function __construct($code, $msg){
 		header("HTTP/1.1 $code");
-		trigger_error($msg , E_USER_ERROR);
+		if(!isset(self::$status[$code])){
+			die('Undefined status code '.$code);
+		}
+		die(self::$status[$code].'<br/>'.$msg);
 	}
 
 }
