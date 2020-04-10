@@ -1,5 +1,6 @@
 <?php
 header("Content-type: text/html; charset=utf-8");
+ini_set("short_open_tag","On");
 define("ROOTDIR",dirname(__FILE__)."/");
 define("ENV","dev");
 define("SPACE","usr");
@@ -7,9 +8,8 @@ define("SPACE","usr");
 if(ENV != "live"){
 	error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 }else{
-	error_reporting(0);//不显示错误
+	error_reporting(0);//display nothing online
 }
-ini_set("short_open_tag","On");
 
 require_once "lib/Loader.php";
 Lib\Loader::init();
