@@ -97,8 +97,6 @@ class Router{
 		}else{
 			$classname = "Ctrl\\$area\\".$controller;
 
-			$act = $classname."\\".$action;
-
 			//权限认证机制
 			$authcfg = Config::get("auth");
 			
@@ -126,10 +124,10 @@ class Router{
 			}
 			
 			while(count($auths) > 0){
-				$auth = array_shift($auths);//出栈
+				$auth = array_pop($auths);//出栈
 				$auth = "Auth\\".$auth;
 
-				$check = $auth::valid($act);
+				$check = $auth::valid(Config::get("uri"));
 				if($check){
 					$auth::allow();
 				}else{

@@ -12,9 +12,7 @@ if(ENV != "live"){
 ini_set("short_open_tag","On");
 
 require_once "lib/Loader.php";
-
 Lib\Loader::init();
-
 Lib\Router::dispatch();
 
 ?>

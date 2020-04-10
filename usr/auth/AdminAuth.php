@@ -2,10 +2,8 @@
 
 namespace Auth;
 use Lib;
-use Lib\IBase as LI;
 
-
-class AdminAuth implements LI\IAuth
+class AdminAuth implements Lib\IBase\IAuth
 {
 	static function valid($act)
 	{
