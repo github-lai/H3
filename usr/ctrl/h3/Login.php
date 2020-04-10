@@ -3,14 +3,13 @@
 namespace Ctrl\H3;
 use Lib;
 use Model;
-use Model\Helper as MH;
 
 class Login extends Base
 {
 
 	function Index()
 	{
-		return $this->view("Login");
+		return $this->view();
 	}
 
 	function Submit()

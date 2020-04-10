@@ -103,7 +103,7 @@ class CtrlBase
 		//判断view是否存在
 		$viewfile = ROOTDIR.SPACE."/tpl/".strtolower($area).'/'.strtolower($this->controller)."/".$tplfull;
 		if(!file_exists($viewfile)){
-			return "找不到模板文件".$tplfull;
+			die("找不到模板文件".$tplfull);
 		}
 
 		$content = file_get_contents($viewfile, "r");
