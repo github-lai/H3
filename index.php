@@ -12,18 +12,8 @@ if(ENV != "live"){
 ini_set("short_open_tag","On");
 
 require_once "lib/Loader.php";
-require_once "lib/Helper.php";
 
-Loader::autoload();
-Lib\Config::init(ROOTDIR."inc/config.ini");
-
-Lib\Config::set("module",array("admin"));//注：模块名不能使用public这样的关键字
-Lib\Config::set("tplext",".htm");//摸板的后缀设置
-/*
-认证器配置
-优先级依次为 1=action,2=controller,3=module
-*/
-Lib\Config::set("authpath",array("Admin" => "AdminAuth"));
+Lib\Loader::init();
 
 Lib\Router::dispatch();
 

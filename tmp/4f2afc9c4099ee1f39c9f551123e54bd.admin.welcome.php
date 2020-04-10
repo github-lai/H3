@@ -1,11 +1,18 @@
+<?php
+$_root = $this->vars["_root"];
+$_cfgurl = $this->vars["_cfgurl"];
+
+?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<base href="{$_cfgurl}"/>
+		<base href="<?php echo $_cfgurl; ?>"/>
 		<link rel="shortcut icon" href="favicon.ico">
-		<container id="header"/>
+		
+
+
 		<link href="res/css/bootstrap.min.css" rel="stylesheet" />
 		<style type="text/css">
 			.menu{ display:inline-block;}
@@ -21,8 +28,8 @@
 		<div class="container" style="padding:0!important;">
 			<b>Administrator</b>
 			<ul class="menu">
-			<li><a href="{$_cfgurl}">首页</a></li>
-			<li><a href="{$_cfgurl}@admin/welcome">用户中心</a></li>
+			<li><a href="<?php echo $_cfgurl; ?>">首页</a></li>
+			<li><a href="<?php echo $_cfgurl; ?>@admin/welcome">用户中心</a></li>
 			</ul>
 			<span class="htop" id="toplink" style="float:right;color:white;">
 			</span>
@@ -32,7 +39,9 @@
 	<div class="container" style="position:relative;">
 
 	<section class="row mcontent">
-		<container id="body"/>
+		
+	welcome
+
 	</section>
 
 	</div>
@@ -54,7 +63,13 @@
 			});
 		});
 	</script>
-	<container id="footer"/>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			setOn(1);
+		});
+	</script>
+
 </body>
 </html>
 

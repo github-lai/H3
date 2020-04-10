@@ -12,8 +12,7 @@
 
 
 	<div class="row" style="">
-		<div class="col-sm-8"><img src="res/images/8.jpg" style="width:100%;"></div>
-		<div class="col-sm-4" style="padding:30px;background:#fff;line-height:30px;border:solid 1px #ccc;">
+		<div class="col-sm-4 col-sm-offset-4" style="padding:30px;background:#fff;line-height:30px;border:solid 1px #ccc;">
 
 		<form onsubmit="return false">
 			<table class="logtab" cellpadding="0" cellspacing="15" align="center" style="">
@@ -57,7 +56,7 @@
 					layer.alert("登录成功，即将跳转");
 
 					setTimeout(function(){
-						location.href = "admin/welcome";
+						location.href = "@admin/welcome";
 						},2000);
 				}else{
 					layer.alert("登录失败，"+data);

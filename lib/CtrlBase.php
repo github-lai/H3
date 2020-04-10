@@ -7,10 +7,8 @@ namespace Lib;
 */
 class CtrlBase
 {
-    public $tags = array();
-    public $vals = array();
     public $vars = array();
-    public $module = "";
+    public $area = "";
     public $controller = "";
     public $tpl = "";
 
@@ -22,9 +20,9 @@ class CtrlBase
 		new Http(404,"Action '$name' not found");
 	}
 
-	function setModule($module)
+	function setArea($area)
 	{
-		$this->module = $module;
+		$this->area = $area;
 	}
 
 	function setController($controller)
@@ -60,9 +58,9 @@ class CtrlBase
 		return;
 	}
 
-	function tpltmp($module,$tpl)
+	function tpltmp($area,$tpl)
 	{
-		$name = strtolower("4f2afc9c4099ee1f39c9f551123e54bd.$module.$tpl.php");//缓存文件名
+		$name = strtolower("4f2afc9c4099ee1f39c9f551123e54bd.$area.$tpl.php");//缓存文件名
 		$file = ROOTDIR."tmp/$name";
 		return $file;
 	}
@@ -74,36 +72,36 @@ class CtrlBase
 			$tpl = "Index";//默认摸板
 		}
 
-		$module = $this->module;
-		if($module == "")
+		$area = $this->area;
+		if($area == "")
 		{
-			$module = "default";//摸板默认分组
+			$area = "h3";//摸板默认分组
 		}
 
-		$file = $this->tpltmp($module, $tpl);
+		$file = $this->tpltmp($area, $tpl);
 		$setting = Config::get("cache");
 		if($setting["tpl"] == "true"){
 			if(!file_exists($file)){
-				$this->build($module, $tpl, $layout);
+				$this->build($area, $tpl, $layout);
 			}else{
 				if(filemtime($file) <= time()){
-					$this->build($module, $tpl, $layout);
+					$this->build($area, $tpl, $layout);
 				}
 			}
 		}else{
-			$this->build($module, $tpl, $layout);
+			$this->build($area, $tpl, $layout);
 		}
 		//echo $file;exit;
 		include $file;
 	}
 
-	function build($module,$tpl,$layout)
+	function build($area,$tpl,$layout)
 	{
 		$ext = Config::get("tplext");
 		$tplfull = $tpl.$ext;
 
 		//判断view是否存在
-		$viewfile = ROOTDIR.SPACE."/tpl/".strtolower($module)."/".$tplfull;
+		$viewfile = ROOTDIR.SPACE."/tpl/".strtolower($area)."/".$tplfull;
 		if(!file_exists($viewfile)){
 			return "找不到模板文件".$tplfull;
 		}
@@ -112,7 +110,7 @@ class CtrlBase
 		
 		if($layout !== false){
 			$layoutname = ($layout == null ? "_Layout" : $layout);
-			$masterfile = ROOTDIR.SPACE."/tpl/".strtolower($module)."/".$layoutname.$ext;//在linux下大小写敏感，注意了
+			$masterfile = ROOTDIR.SPACE."/tpl/".strtolower($area)."/".$layoutname.$ext;//在linux下大小写敏感，注意了
 			$tmp = "";
 			if(file_exists($masterfile)){
 				$tmp = file_get_contents($masterfile,"r");
@@ -155,7 +153,7 @@ class CtrlBase
 		$final = $eg->compile($final);
 		$final = $head.$final;
 
-		$file = $this->tpltmp($module, $tpl);
+		$file = $this->tpltmp($area, $tpl);
 		file_put_contents($file, $final, LOCK_EX);
 		$setting = Config::get("cache");
 		$seconds = intval($setting["tplexpire"]);

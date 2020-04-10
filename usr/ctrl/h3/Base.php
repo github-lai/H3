@@ -1,5 +1,5 @@
 <?php
-namespace Ctrl;
+namespace Ctrl\H3;
 use Lib;
 use Model;
 use Model\Helper as MH;
@@ -19,7 +19,7 @@ class Base extends Lib\CtrlBase{
 		if(!isset($_SESSION["admin"])){
 			$html  = '<a href="login" style="color:yellow;">登录</a>';
 		}else{
-			$html  =  $_SESSION["admin"]["username"].' <a href="base/logout" style="color:yellow;">退出</a>';
+			$html  =  $_SESSION["admin"]["username"].' <a href="@admin/welcome" style="color:yellow;">进入用户中心</a>'.' <a href="base/logout" style="color:yellow;">退出</a>';
 		}
 		return $html;
 	}

@@ -13,7 +13,7 @@ class Helper{
 		list($m0,$s0) = explode("   ",$t);   
 		list($m1,$s1) = explode("   ",$t1);   
 		return sprintf("%.3f ms",($s1+$m1-$s0-$m0)*1000);
-	} 
+	}
 
 	static function microtime_float()
 	{

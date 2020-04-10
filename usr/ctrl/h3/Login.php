@@ -1,6 +1,6 @@
 <?php
 
-namespace Ctrl;
+namespace Ctrl\H3;
 use Lib;
 use Model;
 use Model\Helper as MH;

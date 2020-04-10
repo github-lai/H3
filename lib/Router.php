@@ -61,68 +61,86 @@ class Router{
 			$path_info_array = array("Home","Index");
 		}
 
-		$modules = Config::get("module");
+		$areas = Config::get("area");
 
-		$seg0 = ucfirst($path_info_array[0]);//取出第一个元素module
+		$seg0 = ucfirst($path_info_array[0]);//取出第一个元素area
 		$seg1 = ucfirst($path_info_array[1]);//取出第二个元素controller
 		$seg2 = ucfirst($path_info_array[2]);//取出第三个元素action
 		$seg3 = $path_info_array[3];//取出第四个元素id
-		
-		$module =  $seg0;
-		$controller = $seg1;
-		$action =  $seg2;
-		$id =  $seg3;
-		
-		$exist = in_array(strtolower($module),$modules);
-		if(!$exist){
+
+		$area =  $seg0;
+		if(substr($seg0,0,1) === '@'){
+			$area =  ucfirst(substr($seg0,1));
+			$controller = $seg1;
+			$action =  $seg2;
+			$id =  $seg3;
+		}else{
+			$area =  'H3';//默认
 			$controller = $seg0;
-			$action = $seg1;
-			$id = $seg2;
-			$module = "";//设置默认模块
-			if($controller == ""){
-				$controller = "Home";	
-			}
+			$action =  $seg1;
+			$id =  $seg2;
+		}
+		
+		if($controller == ""){
+			$controller = "Home";//默认控制器名
+		}
+		if($action == ""){
+			$action = "Index";//默认Action名
 		}
 
-		Config::set("uri","$module/$controller/$action");
+		Config::set("uri","$area/$controller/$action");
 
-		$ctrlfile = ROOTDIR.SPACE."/ctrl/".strtolower($module)."/".$controller.".php";//这句话的strtolower是根据linux的调适而来
-		//echo $ctrlfile;exit;
+		$ctrlfile = ROOTDIR.SPACE."/ctrl/".strtolower($area)."/".$controller.".php";//这句话的strtolower是根据linux的调适而来
+
 		if(!file_exists($ctrlfile)){
-			new Http(404, "Controller '$module/$controller' not found");
+			new Http(404, "dispatch alert : Controller '$area/$controller' not found");
 		}else{
-			$classname = "Ctrl\\".$controller;
-			if($exist){
-				$classname = "Ctrl\\".$module."\\".$controller;
-			}
-
-			if($action == ""){
-				$action = "Index";//默认Action
-			}
+			$classname = "Ctrl\\$area\\".$controller;
 
 			$act = $classname."\\".$action;
 
 			//权限认证机制
-			$authcfg = Config::get("authpath");
-			foreach(array($act, $classname,$module) as $val){
-				if(in_array($val, array_keys($authcfg))){
-					$auth = "Auth\\".$authcfg[$val];
-					$check = $auth::valid($act);
-					if($check){
-						$auth::allow();
-					}else{
-						$auth::deny();
+			$authcfg = Config::get("auth");
+			
+			$auths = array();
+			foreach($authcfg as $k=>$v)
+			{
+				if(Config::get("debug") === 'true'){
+					$arr = explode('/',strtolower($k));
+					if(count($arr) != 3){
+						die("路由配置项 $k 不符合要求");
 					}
-					break;//认证器并联设计，少了这句，认证器就是串联模式
+				}
+				$level1 = "$area/*/*";
+				$level2 = "$area/$controller/*";
+				$level3 = "$area/$controller/$action";
+				if($level3 == $k){
+					array_push($auths, $v);//压栈
+				}
+				if($level2 == $k){
+					array_push($auths, $v);
+				}
+				if($level1 == $k){
+					array_push($auths, $v);
 				}
 			}
+			
+			while(count($auths) > 0){
+				$auth = array_shift($auths);//出栈
+				$auth = "Auth\\".$auth;
 
-			//缓存机制
+				$check = $auth::valid($act);
+				if($check){
+					$auth::allow();
+				}else{
+					$auth::deny();
+				}
+			}
 
 			//实例化controller
 			$ctrl = new $classname;
 
-			$ctrl->setModule($module);
+			$ctrl->setArea($area);
 			$ctrl->setController($controller);
 			$ctrl->setTpl($action);
 
