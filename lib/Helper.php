@@ -23,12 +23,14 @@ class Helper{
 	
 	static function error($msg)
 	{
-		error_log($msg."\r\n", 3,  ROOTDIR."/log/error_".date("Ymd",time()).".log");
+		$msg = date("Y-m-d H:i:s",time())."\r\n".$msg."\r\n";
+		error_log($msg, 3,  ROOTDIR."/log/error_".date("Ymd",time()).".log");
 	}
 
 	static function info($msg)
 	{
-		error_log($msg."\r\n", 3,  ROOTDIR."/log/info_".date("Ymd",time()).".log");
+		$msg = date("Y-m-d H:i:s",time())."\r\n".$msg."\r\n";
+		error_log($msg, 3,  ROOTDIR."/log/info_".date("Ymd",time()).".log");
 	}
 
 	static function filter($str)
