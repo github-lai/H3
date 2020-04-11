@@ -1,7 +1,7 @@
 <?php
 header("Content-type: text/html; charset=utf-8");
 ini_set("short_open_tag","On");
-date_default_timezone_set('Asia/ShangHai');
+date_default_timezone_set('Asia/Shanghai');
 define("ROOTDIR",dirname(__FILE__)."/");
 define("ENV","dev");
 define("SPACE","usr");
