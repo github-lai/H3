@@ -15,5 +15,5 @@ if(ENV != "live"){
 require_once "lib/Loader.php";
 Lib\Loader::init();
 Lib\Router::dispatch();
-Lib\Helper::info('helo');
+
 ?>
