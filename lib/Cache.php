@@ -14,7 +14,7 @@ class Cache{
 					self::$instance = new Cache\MemCache();
 					break;
 				case "redis":
-					self::$instance = null;
+					self::$instance = new Cache\Redis();
 					break;
 				case "filecache":
 					self::$instance = new Cache\FileCache();

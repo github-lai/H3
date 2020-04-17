@@ -15,6 +15,9 @@ class Home extends Base
 	function Index()
 	{
 		$this->set("say","hello word!!");
+		$cache = Lib\Cache::one();
+		$cache->set('lala','helo');
+		$this->set('lala',$cache->get('lala'));
 		return $this->view();
 	}
 
