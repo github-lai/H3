@@ -15,9 +15,6 @@ class Home extends Base
 	function Index()
 	{
 		$this->set("say","hello word!!");
-		$cache = Lib\Cache::one();
-		$kk = $cache->increase('counterkk');
-		$this->set('lala',$cache->get('counterkk'));
 		return $this->view();
 	}
 

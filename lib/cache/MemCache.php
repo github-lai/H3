@@ -78,8 +78,9 @@ class MemCache implements IBase\ICache{
 	//判断
 	public function haskey($key)
 	{
-		$data = $this->get($key); 
-		return $data !== false;
+		$key = $this->prefix($key);
+		$val = $this->get($key); 
+		return $val !== false;
 	}
 
 	//读取
@@ -98,15 +99,24 @@ class MemCache implements IBase\ICache{
 	public function increase($key, $step=1)
 	{
 		$key = $this->prefix($key);
-		self::$instance->increment($key, $step);
+		$val = self::$instance->get($key);
+		if($val === false){
+			self::$instance->set($key, 0, 0, 0);
+		}
+		return self::$instance->increment($key, $step);
 	}
 	
 	//增量计数器
 	//操作说明：必须确保$key存在才会执行增量操作
+	//注意：递减的结果不能小于0，最小值是0，区别于redis可以为负数的情况
 	public function decrease($key, $step=1)
 	{
 		$key = $this->prefix($key);
-		self::$instance->decrement($key, $step);
+		$val = self::$instance->get($key);
+		if($val === false){
+			self::$instance->set($key, 0, 0, 0);
+		}
+		return self::$instance->decrement($key, $step);
 	}
 	
 }
