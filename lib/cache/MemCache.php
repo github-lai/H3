@@ -15,8 +15,8 @@ class MemCache implements IBase\ICache{
 
 			$memcfg = Lib\Config::get("memcache");
 			if(class_exists('Memcached',false)){
-				//这是09年出的php的拓展，一直有人维护，这是网友推荐的
-				self::$instance = new \Memcached;//这个反斜杠很重要
+				//这是09年出的php的拓展，一直有人维护，推荐
+				self::$instance = new \Memcached;//反斜杠代表根命名空间
 
 				//这里可以做一些基础配置
 				//self::$instance->setOption(\Memcached::OPT_REMOVE_FAILED_SERVERS, true);
@@ -27,10 +27,10 @@ class MemCache implements IBase\ICache{
 				self::$instance->addServer($memcfg["host"], $memcfg["port"]);
 			}else if(class_exists('Memcache',false)){
 				//这是04年php出的扩展，好久没有人维护了
-				self::$instance = new \Memcache;//这个反斜杠很重要
-				self::$instance->addServer($memcfg["host"], $memcfg["port"]) or die("addserver失败");
+				self::$instance = new \Memcache;//反斜杠代表根命名空间
+				self::$instance->addServer($memcfg["host"], $memcfg["port"]);
 				//之所以注释下面的语句是因为connect只能连接一台服务器和端口，
-				//使用addserver可以允许分布式的多台服务器和端口，这是网友建议的
+				//使用addserver可以允许分布式的多台服务器和端口
 				//self::$instance->connect($memcfg["host"], $memcfg["port"]) or die("connect失败");
 				//$status = self::$instance->getStats();
 			}else{
@@ -44,17 +44,29 @@ class MemCache implements IBase\ICache{
 			self::$version = $ver;
 		}
 	}
-
+	
+	public function getMethods()
+	{
+		return \get_class_methods(self::$instance);
+	}
+	
 	public function prefix($key)
 	{
 		$key = "h3_".self::$version."_".md5($key);
 		return $key;
 	}
 
-	//设置
-	public function set($key,$val,$seconds)
+	/*
+	* 存在则设置，不存在则添加
+	* @param mixed $key
+	* @param mixed $val
+	* @param mixed $flag   默认为0不压缩  压缩状态填写：MEMCACHE_COMPRESSED.单项数据比较大的时候启用压缩能提升内存使用效率和性能，数据小则不需要
+	* @param mixed $seconds  默认缓存时间(单位秒)
+	*/
+	public function set($key, $val, $flag=0, $seconds=600)
 	{
-		return self::$instance->set($this->prefix($key),$val,$seconds);
+		$key = $this->prefix($key);
+		return self::$instance->set($key, $val, $flag, $seconds);
 	}
 	
 	//删除
@@ -66,7 +78,8 @@ class MemCache implements IBase\ICache{
 	//判断
 	public function haskey($key)
 	{
-		return false;//暂时没有该方法
+		$data = $this->get($key); 
+		return $data !== false;
 	}
 
 	//读取
@@ -79,4 +92,23 @@ class MemCache implements IBase\ICache{
 	{
 		self::$instance->flush();
 	}
+	
+	//增量计数器
+	//操作说明：必须确保$key存在才会执行增量操作
+	public function increase($key, $step=1)
+	{
+		$key = $this->prefix($key);
+		self::$instance->increment($key, $step);
+	}
+	
+	//增量计数器
+	//操作说明：必须确保$key存在才会执行增量操作
+	public function decrease($key, $step=1)
+	{
+		$key = $this->prefix($key);
+		self::$instance->decrement($key, $step);
+	}
+	
 }
+
+

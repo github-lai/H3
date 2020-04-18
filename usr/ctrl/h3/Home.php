@@ -16,8 +16,8 @@ class Home extends Base
 	{
 		$this->set("say","hello word!!");
 		$cache = Lib\Cache::one();
-		$cache->set('lala','helo');
-		$this->set('lala',$cache->get('lala'));
+		$kk = $cache->increase('counterkk');
+		$this->set('lala',$cache->get('counterkk'));
 		return $this->view();
 	}
 

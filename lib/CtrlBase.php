@@ -60,7 +60,7 @@ class CtrlBase
 
 	function tpltmp($area,$tpl)
 	{
-		$name = strtolower("4f2afc9c4099ee1f39c9f551123e54bd.$area.$tpl.php");//缓存文件名
+		$name = strtolower("tpl.tmp.$area.$tpl.php");//缓存文件名
 		$file = ROOTDIR."tmp/$name";
 		return $file;
 	}
@@ -91,7 +91,7 @@ class CtrlBase
 		}else{
 			$this->build($area, $tpl, $layout);
 		}
-		//echo $file;exit;
+
 		include $file;
 	}
 
@@ -107,7 +107,7 @@ class CtrlBase
 		}
 
 		$content = file_get_contents($viewfile, "r");
-		
+				
 		if($layout !== false){
 			$layoutname = ($layout == null ? "_Layout" : $layout);
 			$masterfile = ROOTDIR.SPACE."/tpl/".strtolower($area)."/".$layoutname.$ext;//在linux下大小写敏感，注意了
@@ -118,7 +118,7 @@ class CtrlBase
 				$error = array();
 				foreach($result[1] as $item)
 				{
-					$id = str_replace(['id=','"',' '],['','',''],$item);
+					$id = str_replace(array('id=','"',' '), array('','',''), $item);
 					preg_match("|<container(\s+id=\"\s*?$id\s*?\")>([\w\W]*)</container>|U",$content, $arr);
 					if(isset($arr[0])){
 						$tmp = str_replace("<container$item/>",$arr[2],$tmp);
@@ -151,10 +151,14 @@ class CtrlBase
 		$head .= "\r\n?>\r\n";
 
 		$final = $eg->compile($final);
+		
 		$final = $head.$final;
 
 		$file = $this->tpltmp($area, $tpl);
-		file_put_contents($file, $final, LOCK_EX);
+		$bytes = file_put_contents($file, $final, LOCK_EX);
+		if($bytes === false){
+			die("CtrlBase alert: permission deny!");
+		}
 		$setting = Config::get("cache");
 		$seconds = intval($setting["tplexpire"]);
 		@touch($file, time() + $seconds);
