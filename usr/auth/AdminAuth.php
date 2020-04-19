@@ -7,8 +7,7 @@ class AdminAuth implements Lib\IBase\IAuth
 {
 	static function valid($act)
 	{
-		session_start();
-		return isset($_SESSION["admin"]);
+		return Lib\Auth::check("admin");
 	}
 	
 	static function allow()

@@ -15,11 +15,11 @@ class Base extends Lib\CtrlBase{
 	function IsLogin()
 	{
 		$html = "";
-		session_start();
-		if(!isset($_SESSION["admin"])){
-			$html  = '<a href="login" style="color:yellow;">登录</a>';
+		if(Lib\Auth::check("admin")){
+			$arr = Lib\Auth::get("admin");
+			$html  =  $arr["username"].' <a href="@admin/welcome" style="color:yellow;">进入用户中心</a> <a href="base/logout" style="color:yellow;">退出</a>';
 		}else{
-			$html  =  $_SESSION["admin"]["username"].' <a href="@admin/welcome" style="color:yellow;">进入用户中心</a>'.' <a href="base/logout" style="color:yellow;">退出</a>';
+			$html  = '<a href="login" style="color:yellow;">登录</a>';
 		}
 		return $html;
 	}
@@ -34,8 +34,7 @@ class Base extends Lib\CtrlBase{
 
 	function Logout()
 	{
-		session_start();
-		session_destroy();
+		Lib\Auth::remove("admin");
 		return $this->redirect(Lib\Config::get("url")."home/index");
 	}
 

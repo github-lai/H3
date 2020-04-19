@@ -30,9 +30,7 @@ class Login extends Base
 			if(count($models) > 0)
 			{
 				$m = $models[0];
-				$_SESSION["admin"] = array(
-					"userid"=>$m->iid(),
-					"username"=>$m->username());
+				Lib\Auth::reg("admin", array("userid"=>$m->iid(),"username"=>$m->username()));
 				$msg = "1";
 			}else{
 				$msg = "0-用户名或密码错误";
