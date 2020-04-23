@@ -1,7 +1,7 @@
 {
     "name": "h3/lib",
     "description": "A php mvc framework",
-    "type": "library",
+    "type": "project",
     "license": "MIT",
     "minimum-stability": "dev",
     "require": {}
