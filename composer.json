@@ -2,7 +2,7 @@
     "name": "h3",
     "description": "A php mvc framework",
     "type": "library",
-    "license": "GPL3.0",
+    "license": "MIT",
     "minimum-stability": "dev",
     "require": {}
 }
