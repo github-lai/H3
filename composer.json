@@ -4,14 +4,5 @@
     "type": "library",
     "license": "GPL3.0",
     "minimum-stability": "dev",
-	"repositories": {
-	    "packagist": {
-	        "type": "composer",
-	        "url": "https://packagist.phpcomposer.com"
-	    }
-	},
-    "require": {},
-	"autoload": {
-	    "psr-4": { "Lib\\": "./h3/lib" }
-	}
+    "require": {}
 }
