@@ -1,5 +1,5 @@
 {
-    "name": "h3",
+    "name": "h3/lib",
     "description": "A php mvc framework",
     "type": "library",
     "license": "MIT",
