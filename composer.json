@@ -1,6 +1,6 @@
 {
-    "name": "h3/lib",
-    "description": "A php mvc framework",
+    "name": "h3/start",
+    "description": "An highly effecient php mvc framework",
     "type": "project",
     "license": "MIT",
     "minimum-stability": "dev",
