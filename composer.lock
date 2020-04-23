@@ -1,0 +1,45 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "eb6f282e431f59b1148ed0fc41680028",
+    "packages": [
+        {
+            "name": "h3/framework",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://gitee.com/lai2020/framework",
+                "reference": "ec4377d0b6f26082b2ea8911187f56ffe3e193a3"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "github-lai",
+                    "email": "373515719@qq.com"
+                }
+            ],
+            "description": "An highly effecient php mvc framework",
+            "time": "2020-04-23T23:20:59+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "h3/framework": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=5.3.3"
+    },
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
+}

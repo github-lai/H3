@@ -3,12 +3,15 @@
     "description": "A php mvc framework",
     "type": "project",
     "license": "MIT",
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
 	"repositories": {
 	    "packagist": {
             "type": "composer",
             "url": "https://packagist.phpcomposer.com"
         }
 	},
-    "require": {}
+    "require": {
+        "php": ">=5.3.3",
+        "h3/framework": "dev-master"
+    }
 }

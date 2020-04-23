@@ -6,4 +6,5 @@
 
 #临时文件
 /tmp/*
-/vendor/
+
+/vendor/*
