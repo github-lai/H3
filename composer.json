@@ -1,8 +1,19 @@
 {
-    "name": "h3/src",
+    "name": "h3/lib",
     "description": "A php mvc framework",
     "type": "library",
-    "license": "GPL3.0",
+    "license": "MIT",
     "minimum-stability": "dev",
-    "require": {}
+	"repositories": {
+	    "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+	},
+    "require": {
+        "laravel/framework": "5.4.x-dev"
+    },
+	"autoload": {
+	    "psr-4": { "Lib\\": "./h3/lib" }
+	}
 }
