@@ -3,13 +3,13 @@
     "description": "An highly effecient php mvc framework",
     "type": "project",
     "license": "MIT",
-    "minimum-stability": "dev",
-	"repositories": {
-	    "packagist": {
-            "type": "composer",
-            "url": "https://packagist.phpcomposer.com"
+    "minimum-stability": "stable",
+    "repositories": {
+	"packagist": {
+	    "type": "composer",
+	    "url": "https://packagist.phpcomposer.com"
         }
-	},
+    },
     "require": {
         "php": ">=5.3.3",
         "h3/framework": "dev-master"
