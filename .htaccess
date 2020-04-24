@@ -3,5 +3,10 @@ RewriteEngine  on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
+<FilesMatch "\.(bak|inc|ini|log|lib|sh|tpl|lbi|dwt)$">
+order deny,allow
+deny from all
+</FilesMatch>
+
 RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]  
 
