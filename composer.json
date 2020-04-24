@@ -3,7 +3,7 @@
     "description": "An highly effecient php mvc framework",
     "type": "project",
     "license": "MIT",
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "repositories": {
 	"packagist": {
 	    "type": "composer",
