@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "73004e8f5d90a58baf1379171575fc0b",
+    "content-hash": "07bf54da3da9bd834e68d2c340a29d4c",
     "packages": [
         {
             "name": "h3/framework",
@@ -12,7 +12,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitee.com/lai2020/framework",
-                "reference": "36d6f5e9d66d6afe27edd96538ecbfcbf09b2d59"
+                "reference": "3b8a491d7725e465e749cf6c0d75f0add3f9772a"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -35,7 +35,7 @@
                 }
             ],
             "description": "An highly effecient php mvc framework",
-            "time": "2020-04-24T03:49:11+00:00"
+            "time": "2020-04-24T21:28:53+00:00"
         }
     ],
     "packages-dev": [],
