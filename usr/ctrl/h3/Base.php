@@ -2,7 +2,6 @@
 namespace Ctrl\H3;
 use Lib;
 use Model;
-use Model\Helper as MH;
 
 class Base extends Lib\CtrlBase{
 	public $helper = null;

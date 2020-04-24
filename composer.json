@@ -13,5 +13,14 @@
     "require": {
         "php": ">=5.3.3",
         "h3/framework": "dev-master"
+    },
+    "autoload": {
+    	"files":[],
+	"psr-4":{
+	   "Ctrl\\" :"usr/ctrl",
+	   "Model\\" :"usr/model",
+	   "Auth\\":"usr/auth"
+	}
     }
+    
 }

@@ -1,7 +1,6 @@
 <?php
 namespace Model;
 use Lib;
-use Model\Helper as MH;
 
 class User extends Lib\DbBase{
 	function __construct(){
