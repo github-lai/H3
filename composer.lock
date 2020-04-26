@@ -12,7 +12,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitee.com/lai2020/framework",
-                "reference": "dc562fbcdf11cb87ae0e0e9c0770123cd5cd0c45"
+                "reference": "c05c6026064df2b92ed08c3c5486fea0b157eb19"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -35,7 +35,7 @@
                 }
             ],
             "description": "An highly effecient php mvc framework",
-            "time": "2020-04-26T19:18:32+00:00"
+            "time": "2020-04-26T21:19:58+00:00"
         }
     ],
     "packages-dev": [],
