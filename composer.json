@@ -17,6 +17,8 @@
     	"files":["vendor/h3/framework/init.php"],
 	"psr-4":{
 	   "Ctrl\\" :"usr/ctrl",
+	   "Ctrl\\H3\\" :"usr/ctrl/h3",
+	   "Ctrl\\Admin\\" :"usr/ctrl/admin",
 	   "Model\\" :"usr/model",
 	   "Auth\\":"usr/auth"
 	}

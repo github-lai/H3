@@ -12,7 +12,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitee.com/lai2020/framework",
-                "reference": "c05c6026064df2b92ed08c3c5486fea0b157eb19"
+                "reference": "d6b499e157e0aee14c5a4971aab8d7597b3b64d8"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -21,7 +21,10 @@
             "autoload": {
                 "files": [],
                 "psr-4": {
-                    "Lib\\": "lib"
+                    "Lib\\": "lib",
+                    "Lib\\Cache\\": "lib/cache",
+                    "Lib\\Db\\": "lib/db",
+                    "Lib\\IBase\\": "lib/ibase"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -35,7 +38,7 @@
                 }
             ],
             "description": "An highly effecient php mvc framework",
-            "time": "2020-04-26T21:19:58+00:00"
+            "time": "2020-04-26T22:51:24+00:00"
         }
     ],
     "packages-dev": [],
