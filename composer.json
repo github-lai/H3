@@ -14,7 +14,7 @@
         "h3/framework": "dev-master"
     },
     "autoload": {
-    	"files":[],
+    	"files":["vendor/h3/framework/init.php"],
 	"psr-4":{
 	   "Ctrl\\" :"usr/ctrl",
 	   "Model\\" :"usr/model",
