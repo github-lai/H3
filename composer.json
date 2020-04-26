@@ -16,9 +16,9 @@
     "autoload": {
     	"files":["vendor/h3/framework/init.php"],
 	"psr-4":{
-	   "Ctrl\\" :"usr/Ctrl",
-	   "Model\\" :"usr/Model",
-	   "Auth\\":"usr/Auth"
+	   "Ctrl\\" :"usr/ctrl",
+	   "Model\\" :"usr/model",
+	   "Auth\\":"usr/auth"
 	}
     }
     
