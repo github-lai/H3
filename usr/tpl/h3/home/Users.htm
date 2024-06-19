@@ -71,6 +71,7 @@
 			$.post("home/adduser/",null,function(data){
 				if(data > 0)
 				{
+					console.log(data);
 					location.reload();
 				}else{
 					layer.alert("添加失败");

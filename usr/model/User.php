@@ -39,7 +39,6 @@ class User extends Lib\DbBase{
 		$arr = array(
 		"username"=>$username,
 		"userpass"=>$userpass);
-
 		$iid = $this->kv($arr)->add();
 		return $iid;
 	}
