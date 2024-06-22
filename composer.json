@@ -2,26 +2,26 @@
     "name": "h3/h3",
     "description": "An highly effecient php mvc framework",
     "type": "project",
-    "license": "MIT",
+    "license": "MIT", 
     "repositories": {
-	"packagist": {
-	    "type": "composer",
-	    "url": "https://packagist.phpcomposer.com"
+	    "packagist": {
+            "type": "composer",
+            "url": "https://mirrors.aliyun.com/composer"
         }
     },
     "require": {
         "php": ">=5.3.3",
-        "h3/framework": "dev-master"
+        "h3/framework": "v1.0"
     },
     "autoload": {
     	"files":["vendor/h3/framework/init.php"],
-	"psr-4":{
-	   "Ctrl\\" :"usr/ctrl",
-	   "Ctrl\\H3\\" :"usr/ctrl/h3",
-	   "Ctrl\\Admin\\" :"usr/ctrl/admin",
-	   "Model\\" :"usr/model",
-	   "Auth\\":"usr/auth"
-	}
+        "psr-4":{
+        "Ctrl\\" :"usr/ctrl",
+        "Ctrl\\H3\\" :"usr/ctrl/h3",
+        "Ctrl\\Admin\\" :"usr/ctrl/admin",
+        "Model\\" :"usr/model",
+        "Auth\\":"usr/auth"
+        }
     }
     
 }

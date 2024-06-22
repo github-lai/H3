@@ -4,15 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "07bf54da3da9bd834e68d2c340a29d4c",
+    "content-hash": "5c85325cc5ca5e3fea900b3b7aefcb32",
     "packages": [
         {
             "name": "h3/framework",
-            "version": "dev-master",
+            "version": "v1.0",
             "source": {
                 "type": "git",
                 "url": "https://gitee.com/lai2020/framework",
-                "reference": "d6b499e157e0aee14c5a4971aab8d7597b3b64d8"
+                "reference": "6f1fedee2c889a12a62340c79704991723d16309"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -22,8 +22,8 @@
                 "files": [],
                 "psr-4": {
                     "Lib\\": "lib",
-                    "Lib\\Cache\\": "lib/cache",
                     "Lib\\Db\\": "lib/db",
+                    "Lib\\Cache\\": "lib/cache",
                     "Lib\\IBase\\": "lib/ibase"
                 }
             },
@@ -38,20 +38,18 @@
                 }
             ],
             "description": "An highly effecient php mvc framework",
-            "time": "2020-04-26T22:51:24+00:00"
+            "time": "2024-06-22T08:31:03+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "h3/framework": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": ">=5.3.3"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.2.0"
 }

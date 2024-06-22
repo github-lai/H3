@@ -1,12 +1,15 @@
+#AddHandler application/x-httpd-php81 .php
+#Options  +FollowSymlinks  -Multiviews
+
 RewriteEngine  on
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]  
 
 <FilesMatch "\.(bak|inc|ini|log|lib|sh|tpl|lbi|dwt)$">
 order deny,allow
 deny from all
 </FilesMatch>
 
-RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]  
 
