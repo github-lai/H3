@@ -24,7 +24,7 @@
 http://www.helper3.com/res/article/9897.html
 
 
-# 开发常见问题
+<b>开发常见问题</b>
 项目根目录下执行命令：
     composer require h3/framework:v1.0
 打印异常如下
