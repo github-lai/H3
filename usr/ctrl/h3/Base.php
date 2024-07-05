@@ -16,7 +16,7 @@ class Base extends Lib\CtrlBase{
 		$html = "";
 		if(Lib\Auth::check("admin")){
 			$arr = Lib\Auth::get("admin");
-			$html  =  $arr["username"].' <a href="@admin/welcome" style="color:yellow;">进入用户中心</a> <a href="base/logout" style="color:yellow;">退出</a>';
+			$html  =  $arr["username"].' <a href="@admin/welcome" style="color:yellow;">用户中心</a> <a href="base/logout" style="color:yellow;">退出</a>';
 		}else{
 			$html  = '<a href="login" style="color:yellow;">登录</a>';
 		}

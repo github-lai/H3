@@ -25,6 +25,7 @@ http://www.helper3.com/res/article/9897.html
 
 
 <b>开发常见问题</b>
+<p>
 项目根目录下执行命令：
     composer require h3/framework:v1.0
 打印异常如下
@@ -33,7 +34,7 @@ http://www.helper3.com/res/article/9897.html
     国内无法访问packagist外国镜像导致 https://packagist.phpcomposer.com
 解决办法：
     改为国内阿里云镜像 https://mirrors.aliyun.com/composer 再执行命令即可
-
+</p>
 
 # 其他
 <br/><b>Bug反馈与建议</b><br/>
